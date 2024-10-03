@@ -11,11 +11,13 @@ public class Ihm3 {
         String indicatif = numero.substring(0,2);
         String departamental = numero.substring(2,4);
         String taxe = numero.substring(0,3);
+        char numeroCourt = indicatif.charAt(0);
         String resultatRegion ="erreur Region";
         String resultatDepartamental="erreur département";
         String operateur ="erreur operateur";
         String portable="il n'y as pas d'information sur le type :" ;
         String court = "erreur";
+        String tarif = "erreur tarif";
 
         //traitement
         if (numero.length() ==10) {
@@ -210,23 +212,40 @@ public class Ihm3 {
                     }
                 case "07":
                     portable = "c'est un numero portable" ;
+                    break;
+                case "08" :
+                    switch(departamental) {
+                        case "00":
+                            tarif = "(numéros verts) gratuit";
+                        case "01":
+                            tarif = "(numéros verts) gratuit";
+                        case "02":
+                            tarif = "(numéros verts) gratuit";
+                        case "03":
+                            tarif = "(numéros verts) gratuit";
+                        case "04":
+                            tarif = "(numéros verts) gratuit";
+                        case "05":
+                            tarif = "(numéros verts) gratuit";
+                        case "06":
+                            tarif = "Numero gratuit";
+                        case "07":
+                            tarif = "Numero gratuit";
+                        case "08":
+                            tarif = "Numero gratuit";
+                        case "09":
+                            operateur = "Numero gratuit";
+                    }
                 case "09":
                     portable = "c'est un voix sur IP " ;
-
-
-
+                break;
+                }
             }System.out.println("la region est :" + resultatRegion);
             System.out.println("le departement est :" + resultatDepartamental);
             System.out.println("operateur est :" + operateur);
             System.out.println(portable);
-            if (indicatif=="08") {
-                if (departamental =="00" || departamental=="01" || departamental=="02" || departamental=="03" || departamental=="04" || departamental=="05"){
-                    System.out.println(" cest un numero vert");
-                }
-                if (departamental =="06" || departamental=="07" || departamental=="08" || departamental=="09"){
-                    System.out.println(" cest un numero vert");
-                }
-            }
+            System.out.println(tarif);
+
             switch(taxe){
                 case "081":
                     System.out.println("vous paierez au maximum 6 centimes d’euros la minute, ou 15 centimes d’euros l’appel.");
@@ -249,10 +268,8 @@ public class Ihm3 {
                     case "10":
                         court = "inférieur à 0.8 € la minute ou 3 € l'appel";
                 }
+                switch (numeroCourt)
 
             }
-        }else{
-            System.out.println("Votre numero n'est pas egale a 10,la votre est de longueur "+numero.length());
         }
     }
-}
