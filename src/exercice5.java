@@ -12,7 +12,7 @@ public class exercice5 {
         String departamental = numero.substring(2,4);
         String taxe = numero.substring(0,3);
         char numeroCourt = indicatif.charAt(0);
-        String paysIndicatif2 = numero.substring(1,3);
+        String paysIndicatif2 = numero.substring(1, 3).trim();
         String resultatRegion ="erreur Region";
         String resultatDepartamental="erreur département";
         String operateur ="erreur operateur";
@@ -21,9 +21,9 @@ public class exercice5 {
         String tarif = "erreur tarif";
         String semicourt = numero.substring(0,3);
         String pays = "erreur pays";
-        char paysIndicatif1 = indicatif.charAt(1);
+        char paysIndicatif1 = numero.charAt(1);
 
-        //traitement
+        //traitement departement
         if (numero.length() ==10) {
             switch (indicatif){
                 case "01":
@@ -246,6 +246,7 @@ public class exercice5 {
             }
         }
 
+        // traitement taxe
         switch(taxe){
             case "081":
                 System.out.println("vous paierez au maximum 6 centimes d’euros la minute, ou 15 centimes d’euros l’appel.");
@@ -276,6 +277,8 @@ public class exercice5 {
         if (numero.length() == 6 && semicourt == "118") {
             court = "numéros courts de renseignements téléphoniques prix libre";
         }
+
+        // traitement Pays
         if (numero.length() ==13 && numero.charAt(0)=='+') {
             switch (paysIndicatif2) {
                 case "27":
@@ -315,19 +318,20 @@ public class exercice5 {
                     pays = "Royaume uni";
                     break;
             }
-            if (numero.length() ==12 && numero.charAt(0)=='+') {
+
+            if (numero.length() == 12 && numero.charAt(0)=='+') {
                 switch (paysIndicatif1){
-                    case'1':
-                        pays = "Etats Uni ou Canada";
+                    case '1':
+                        pays = "Etats Unis ou Canada";
                         break;
                     case '7':
                         pays="Kazakhstan ou Russie";
                         break;
-                    case '8':
                 }
             }
             }
 
+        //affichage resultat
         System.out.println("la region est :" + resultatRegion);
         System.out.println("le departement est :" + resultatDepartamental);
         System.out.println("operateur est :" + operateur);
@@ -335,5 +339,6 @@ public class exercice5 {
         System.out.println(tarif);
         System.out.println(court);
         System.out.println(pays);
+
     }
 }
