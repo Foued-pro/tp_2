@@ -269,8 +269,7 @@ public class exercice5 {
                 case "10":
                     court = "inférieur à 0.8 € la minute ou 3 € l'appel";
             }
-        }
-        if (numero.length() ==4 &&  ( numero.charAt(0)=='3')) {
+        }else if (numero.length() ==4 &&  ( numero.charAt(0)=='3')) {
             court = "numéros courts à tarification banalisée ou majorée (inférieur à 0.8 € la minute ou 3 € l'appel)";
         }
 

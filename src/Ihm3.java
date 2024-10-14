@@ -12,6 +12,7 @@ public class Ihm3 {
         String departamental = numero.substring(2,4);
         String taxe = numero.substring(0,3);
         char numeroCourt = indicatif.charAt(0);
+        String paysIndicatif2 = numero.substring(1, 3).trim();
         String resultatRegion ="erreur Region";
         String resultatDepartamental="erreur département";
         String operateur ="erreur operateur";
@@ -19,9 +20,9 @@ public class Ihm3 {
         String court = "erreur";
         String tarif = "erreur tarif";
         String semicourt = numero.substring(0,3);
-        String pays = "erreur pays";
+        char paysIndicatif1 = numero.charAt(1);
 
-        //traitement
+        //traitement departement
         if (numero.length() ==10) {
             switch (indicatif){
                 case "01":
@@ -240,87 +241,45 @@ public class Ihm3 {
                     }
                 case "09":
                     portable = "c'est un voix sur IP " ;
-                break;
-                }
-            }System.out.println("la region est :" + resultatRegion);
-            System.out.println("le departement est :" + resultatDepartamental);
-            System.out.println("operateur est :" + operateur);
-            System.out.println(portable);
-            System.out.println(tarif);
-
-            switch(taxe){
-                case "081":
-                    System.out.println("vous paierez au maximum 6 centimes d’euros la minute, ou 15 centimes d’euros l’appel.");
-                    break;
-                case "082":
-                    System.out.println("vous paierez au maximum 20 centimes d’euros la minute, ou 50 centimes d’euros l’appel.");
-                    break;
-                case "089":
-                    System.out.println("vous paierez au maximum 80 centimes d’euros la minute, ou 3 euros par l'appel.");
-                    break;
-            }
-            if (numero.length()<=4 ){
-                switch(indicatif){
-                    case "30":
-                        court = "tarification gratuite";
-                        break;
-                    case "31" :
-                        court = "tarification gratuite";
-                        break;
-                    case "10":
-                        court = "inférieur à 0.8 € la minute ou 3 € l'appel";
-                }
-            }
-            if (numero.length() ==4 &&  ( numero.charAt(0)=='3')) {
-                court = "numéros courts à tarification banalisée ou majorée (inférieur à 0.8 € la minute ou 3 € l'appel)";
-            }
-
-            if (numero.length() == 6 && semicourt == "118") {
-                court = "numéros courts de renseignements téléphoniques prix libre";
-            }
-        if (numero.length() ==10) {
-            switch (indicatif){
-            case "27":
-                pays ="LE pays est : Afrique du sud ";
-            break;
-            case "20":
-                pays ="LE pays est : Egypte";
-                break;
-            case "30":
-                pays ="LE pays est : Grece";
-                break;
-            case "31":
-                pays ="LE pays est : Pays bas";
-                break;
-            case "32":
-                pays ="LE pays est : Belgique";
-                break;
-                case "33":
-                    pays ="LE pays est : France";
-                    break;
-                case "34":
-                    pays ="LE pays est : Espagne";
-                    break;
-                case "36":
-                    pays ="LE pays est : Hongrie";
-                    break;
-                case "39":
-                    pays ="LE pays est : Italie";
-                    break;
-                case "40":
-                    pays ="LE pays est : Roumanie";
-                    break;
-                case "41":
-                    pays ="LE pays est : Suisse";
-                    break;
-                case "44":
-                    pays ="le pays est : Royaume uni";
                     break;
             }
         }
 
+        // traitement taxe
+        switch(taxe){
+            case "081":
+                System.out.println("vous paierez au maximum 6 centimes d’euros la minute, ou 15 centimes d’euros l’appel.");
+                break;
+            case "082":
+                System.out.println("vous paierez au maximum 20 centimes d’euros la minute, ou 50 centimes d’euros l’appel.");
+                break;
+            case "089":
+                System.out.println("vous paierez au maximum 80 centimes d’euros la minute, ou 3 euros par l'appel.");
+                break;
+        }
+        if (numero.length()<=4 ){
+            switch(indicatif){
+                case "30":
+                    court = "tarification gratuite";
+                    break;
+                case "31" :
+                    court = "tarification gratuite";
+                    break;
+                case "10":
+                    court = "inférieur à 0.8 € la minute ou 3 € l'appel";
+            }
+        }else if (numero.length() ==4 &&  ( numero.charAt(0)=='3')) {
+            court = "numéros courts à tarification banalisée ou majorée (inférieur à 0.8 € la minute ou 3 € l'appel)";
+        }else if (numero.length() == 6 && semicourt == "118") {
+            court = "numéros courts de renseignements téléphoniques prix libre";
+        }
 
+        //affichage resultat
+        System.out.println("la region est :" + resultatRegion);
+        System.out.println("le departement est :" + resultatDepartamental);
+        System.out.println("operateur est :" + operateur);
+        System.out.println(portable);
+        System.out.println(tarif);
         System.out.println(court);
-        System.out.println(pays);
     }
     }
